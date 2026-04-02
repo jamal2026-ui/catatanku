@@ -2,7 +2,6 @@ const CACHE_NAME = 'dompetku-v1';
 const assets = [
   '/',
   'index.html',
-  'https://cdn.tailwindcss.com',
   'https://cdn.jsdelivr.net/npm/chart.js'
 ];
 
