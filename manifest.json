@@ -1,0 +1,15 @@
+{
+  "name": "Dompetku Jamal",
+  "short_name": "Dompetku",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1d4ed8",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2454/2454282.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
