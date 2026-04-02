@@ -33,56 +33,83 @@
 
 <div id="main-app" class="app-container hidden">
     <div class="bg-gradient-blue p-6 text-white rounded-b-3xl shadow-lg relative">
-        <button onclick="window.logout()" class="absolute top-6 right-6 opacity-70 hover:opacity-100 text-xs border border-white/30 px-3 py-1 rounded-full">Keluar</button>
-        <div class="flex justify-between items-center mb-1">
-            <h1 id="label-hari" class="text-lg font-semibold uppercase tracking-wide">Memuat...</h1>
-            <p id="label-tanggal" class="text-xs opacity-70">-- --- ----</p>
+        <div class="flex justify-between items-start mb-6">
+            <div>
+                <h1 id="label-hari" class="text-xl font-bold uppercase tracking-wide">Memuat...</h1>
+                <p id="label-tanggal" class="text-xs opacity-70">-- --- ----</p>
+                <p id="user-display-name" class="text-xs mt-2 bg-white/10 px-2 py-0.5 rounded-full inline-block opacity-80">Memuat User...</p>
+            </div>
+            <button onclick="window.logout()" class="opacity-70 hover:opacity-100 text-[10px] border border-white/30 px-3 py-1.5 rounded-full transition whitespace-nowrap">Logout</button>
         </div>
+
         <p class="text-sm opacity-80 uppercase tracking-tighter">Total Saldo</p>
         <h2 id="total-saldo" class="text-4xl font-bold mt-1">Rp 0</h2>
     </div>
 
     <div class="p-4 mt-4 grid grid-cols-2 gap-4">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-            <div class="bg-green-100 p-3 rounded-full text-green-600"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"></path></svg></div>
-            <div><p class="text-xs text-gray-400">Pemasukan</p><p id="total-pemasukan" class="text-green-600 font-bold text-lg">Rp 0</p></div>
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-lg transition">
+            <div class="bg-green-100 p-3 rounded-full text-green-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            </div>
+            <div>
+                <p class="text-xs text-gray-400 uppercase">Pemasukan</p>
+                <p id="total-pemasukan" class="text-green-600 font-bold text-lg">Rp 0</p>
+            </div>
         </div>
-        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-            <div class="bg-red-100 p-3 rounded-full text-red-600"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 20V4m0 0l-4 4m4-4l4 4"></path></svg></div>
-            <div><p class="text-xs text-gray-400">Pengeluaran</p><p id="total-pengeluaran" class="text-red-600 font-bold text-lg">Rp 0</p></div>
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-lg transition">
+            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20V4m0 0l-4 4m4-4l4 4"></path></svg>
+            </div>
+            <div>
+                <p class="text-xs text-gray-400 uppercase">Pengeluaran</p>
+                <p id="total-pengeluaran" class="text-red-600 font-bold text-lg">Rp 0</p>
+            </div>
         </div>
     </div>
 
     <div class="p-4 space-y-4">
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
-            <div class="flex justify-between items-center mb-4"><h3 class="font-semibold">Analisis</h3><span id="label-bulan-analisis" class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg uppercase">---</span></div>
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-semibold text-gray-800">Analisis Bulan Ini</h3>
+                <span id="label-bulan-analisis" class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg uppercase">---</span>
+            </div>
             <div class="flex items-center gap-4">
                 <div class="w-32 h-32"><canvas id="myChart"></canvas></div>
                 <div class="flex-1 space-y-2">
-                    <p id="teks-terbanyak" class="text-xs text-gray-500">Analisa...</p>
-                    <p id="nilai-terbanyak" class="text-sm font-bold text-red-600">Rp 0</p>
+                    <div>
+                        <p id="teks-terbanyak" class="text-xs text-gray-500">Menganalisa...</p>
+                        <p id="nilai-terbanyak" class="text-sm font-bold text-red-600">Rp 0</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
-            <h3 class="font-semibold mb-4">Catatan Terbaru</h3>
-            <div id="daftar-transaksi" class="space-y-3"></div>
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-semibold text-gray-800">Catatan Terbaru</h3>
+            </div>
+            <div id="daftar-transaksi" class="space-y-3 min-h-[100px]">
+                <p class="text-center text-gray-400 py-10">Memuat data dari cloud...</p>
+            </div>
         </div>
     </div>
 
-    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] p-4 z-10"><button onclick="window.bukaModal()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl">+ Catat Baru</button></div>
+    <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[480px] p-4 z-10">
+        <button onclick="window.bukaModal()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl hover:bg-blue-700 transition">
+            + Catat Baru
+        </button>
+    </div>
 
     <div id="modal-form" class="fixed inset-0 bg-black/50 z-20 flex items-center justify-center p-4 hidden">
         <div class="bg-white p-6 rounded-3xl w-full max-w-[380px] space-y-4">
-            <h4 class="text-lg font-bold">Tambah Transaksi</h4>
+            <h4 class="text-lg font-bold text-gray-800">Tambah Transaksi</h4>
             <input type="number" id="nominal" placeholder="Nominal Rp" class="w-full p-4 bg-gray-50 rounded-2xl border-none">
             <input type="text" id="keterangan" placeholder="Keterangan" class="w-full p-4 bg-gray-50 rounded-2xl border-none">
             <div class="flex gap-2">
-                <button onclick="window.tambahKeCloud('pemasukan')" class="flex-1 bg-green-500 text-white py-4 rounded-2xl font-bold">MASUK</button>
-                <button onclick="window.tambahKeCloud('pengeluaran')" class="flex-1 bg-red-500 text-white py-4 rounded-2xl font-bold">KELUAR</button>
+                <button onclick="window.tambahKeCloud('pemasukan')" class="flex-1 bg-green-500 text-white py-4 rounded-2xl font-bold hover:bg-green-600">MASUK</button>
+                <button onclick="window.tambahKeCloud('pengeluaran')" class="flex-1 bg-red-500 text-white py-4 rounded-2xl font-bold hover:bg-red-600">KELUAR</button>
             </div>
-            <button onclick="window.tutupModal()" class="w-full text-gray-400 py-2 text-sm">Batal</button>
+            <button onclick="window.tutupModal()" class="w-full text-center text-gray-400 py-2 text-sm">Batal</button>
         </div>
     </div>
 </div>
@@ -113,6 +140,7 @@
     window.handleAuth = async (mode) => {
         const email = document.getElementById('auth-email').value;
         const pass = document.getElementById('auth-pass').value;
+        if (!email || !pass) return alert("Isi email & password!");
         try {
             if (mode === 'login') await signInWithEmailAndPassword(auth, email, pass);
             else await createUserWithEmailAndPassword(auth, email, pass);
@@ -126,6 +154,8 @@
             currentUser = user;
             document.getElementById('auth-container').classList.add('hidden');
             document.getElementById('main-app').classList.remove('hidden');
+            // Menampilkan email user di header
+            document.getElementById('user-display-name').innerText = user.email;
             startListening(user.uid);
         } else {
             document.getElementById('auth-container').classList.remove('hidden');
@@ -136,29 +166,34 @@
 
     // LISTENER DATA BERDASARKAN USER
     function startListening(uid) {
+        // Query hanya mengambil data milik user yang sedang login
         const q = query(collection(db, "transaksi"), where("userId", "==", uid), orderBy("createdAt", "desc"));
         unsubscribe = onSnapshot(q, (snap) => {
             transaksi = snap.docs.map(doc => ({ ...doc.data(), firestoreId: doc.id }));
             updateTampilan();
-        });
+        }, (error) => { console.log("Firebase Error: " + error); });
     }
 
     window.tambahKeCloud = async (tipe) => {
         const nom = document.getElementById('nominal').value;
         const ket = document.getElementById('keterangan').value;
-        if (!nom || !ket) return alert("Isi lengkap!");
+        if (!nom || !ket) return alert("Isi nominal & keterangan!");
 
         await addDoc(collection(db, "transaksi"), {
             userId: currentUser.uid, // Simpan ID User
-            tipe, nominal: parseInt(nom), keterangan: ket,
+            tipe,
+            nominal: parseInt(nom),
+            keterangan: ket,
             tanggal: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }),
-            createdAt: new Date()
+            createdAt: new Date() // Digunakan untuk mengurutkan transaksi
         });
         window.tutupModal();
     };
 
-    window.hapusDariCloud = async (id) => {
-        if (confirm("Hapus?")) await deleteDoc(doc(db, "transaksi", id));
+    window.hapusDariCloud = async (firestoreId) => {
+        if (confirm("Hapus catatan ini?")) {
+            await deleteDoc(doc(db, "transaksi", firestoreId));
+        }
     };
 
     function updateTampilan() {
@@ -166,9 +201,12 @@
         let masuk = 0, keluar = 0;
         daftar.innerHTML = '';
         
+        if (transaksi.length === 0) { daftar.innerHTML = '<p class="text-center text-gray-400 py-10">Belum ada catatan.</p>'; }
+
         transaksi.forEach((item, idx) => {
             if(item.tipe === 'pemasukan') masuk += item.nominal;
             else keluar += item.nominal;
+            // Tampilkan hanya 5 transaksi terbaru
             if(idx < 5) {
                 const warna = item.tipe === 'pemasukan' ? 'text-green-600' : 'text-red-600';
                 daftar.innerHTML += `
@@ -176,7 +214,7 @@
                     <div><p class="font-medium text-gray-800">${item.keterangan}</p><p class="text-xs text-gray-400">${item.tanggal}</p></div>
                     <div class="flex items-center gap-3">
                         <p class="${warna} font-bold">${item.tipe === 'pemasukan' ? '+' : '-'} ${formatRupiah(item.nominal)}</p>
-                        <button onclick="window.hapusDariCloud('${item.firestoreId}')" class="text-gray-300">×</button>
+                        <button onclick="window.hapusDariCloud('${item.firestoreId}')" class="text-gray-300 hover:text-red-500 hover:bg-gray-50 p-1.5 rounded-fullTransition">×</button>
                     </div>
                 </div>`;
             }
@@ -184,12 +222,12 @@
         document.getElementById('total-saldo').innerText = formatRupiah(masuk - keluar);
         document.getElementById('total-pemasukan').innerText = formatRupiah(masuk);
         document.getElementById('total-pengeluaran').innerText = formatRupiah(keluar);
-        updateHeader();
+        updateHeaderTime();
         renderChart(masuk, keluar);
     }
 
     function formatRupiah(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
-    function updateHeader() {
+    function updateHeaderTime() {
         const d = new Date();
         document.getElementById('label-hari').innerText = new Intl.DateTimeFormat('id-ID', { weekday: 'long' }).format(d);
         document.getElementById('label-tanggal').innerText = new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
@@ -205,7 +243,11 @@
     }
 
     window.bukaModal = () => document.getElementById('modal-form').classList.remove('hidden');
-    window.tutupModal = () => document.getElementById('modal-form').classList.add('hidden');
+    window.tutupModal = () => {
+        document.getElementById('modal-form').classList.add('hidden');
+        document.getElementById('nominal').value = '';
+        document.getElementById('keterangan').value = '';
+    }
 
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 </script>
